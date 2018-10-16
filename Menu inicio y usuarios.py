@@ -6,7 +6,7 @@ Created on Wed Sep 12 19:44:44 2018
 """
 import tkinter.messagebox
 import tkinter as tk
-from menu import menuInicial
+from Catalogo import catalogo
 
 usuarios = {'Pancho': 0000}
 
@@ -60,7 +60,7 @@ def iniciarSesion():
     elif usuario in usuarios and contraseña == usuarios[usuario]:
         
        ventanaInicio.destroy()
-       menuInicial()
+       catalogo()
        
     else:
         

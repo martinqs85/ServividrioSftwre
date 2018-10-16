@@ -79,9 +79,11 @@ def precioFI(alto, ancho):
     # precioFinal = (materiales + fabricacion + instalacion)*1.5
     # Fabricacion = 15.000 aprox por metro cuadrado
     # Instalacion = 10.000 aprox por metro cuadrado
+    cf = 'Costo fabricación' 
+    ci = 'Costo instalación' 
               
-    fabricacion = c.execute('''SELECT precio FROM otros WHERE tipo = 'Costo fabricación' ''')
-    instalacion = c.execute('''SELECT precio FROM otros WHERE tipo = 'Costo instalación' ''')
+    fabricacion = c.execute('''SELECT precio FROM otros WHERE tipo = ? ''', cf)
+    instalacion = c.execute('''SELECT precio FROM otros WHERE tipo = ? ''', ci)
          
     precio = (fabricacion + instalacion)*(alto*ancho/1000000)
          

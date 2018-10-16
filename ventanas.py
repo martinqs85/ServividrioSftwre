@@ -61,10 +61,10 @@ class correderaPVC:
          
          #Marco
          if self.rieles == 2: valorM = c.execute('''SELECT
-            marcoDobleRiel FROM PVCcorredera WHERE color = self.color ''')
+            marcoDobleRiel FROM PVCcorredera WHERE color = ?''', self.color)
          
          else: valorM = c.execute('''SELECT
-            marcoTripleRiel FROM PVCcorredera WHERE color = self.color ''')
+            marcoTripleRiel FROM PVCcorredera WHERE color = ? ''', self.color)
          
          precioMarcoH = self.marcoH*valorM/6*2
          precioMarcoV = self.marcoV*valorM/6*2
@@ -73,7 +73,7 @@ class correderaPVC:
          
          #Refuerzo Marco
          precioRM = c.execute('''SELECT
-            precio FROM otros WHERE tipo = 'Refuerzo marco' ''')
+            precio FROM otros WHERE tipo = ?''', 'Refuerzo marco' )
          
          precioRefuerzoMarco = (self.refMarcoH + self.refMarcoV)*2*precioRM/6
          
@@ -81,7 +81,7 @@ class correderaPVC:
          
          #Hoja
          precioH = c.execute('''SELECT
-            hoja FROM PVCcorredera WHERE color = self.color''')
+            hoja FROM PVCcorredera WHERE color = ?''', self.color)
          
          precioHojaH = self.hojaH*precioH/6*2*self.hojas
          precioHojaV = self.hojaV*precioH/6*2*self.hojas
@@ -90,7 +90,7 @@ class correderaPVC:
          
          #Refuerzo hojas
          precioRH = c.execute('''SELECT
-            precio FROM otros WHERE tipo = 'Refuerzo hoja' ''')
+            precio FROM otros WHERE tipo = ? ''', 'Refuerzo hoja')
          
          precioRefHoja = (self.refHojaH + self.refHojaV)*2*self.hojas*precioRH/6
          
@@ -98,7 +98,7 @@ class correderaPVC:
          
          #Junquillo
          precioJunquillo = c.execute('''SELECT
-            junquillo FROM PVCcorredera WHERE color = self.color''')
+            junquillo FROM PVCcorredera WHERE color = ?''', self.color)
          
          precioJ = (self.junquilloH + self.junquilloV)*2*self.hojas*precioJunquillo/6
          
@@ -106,7 +106,7 @@ class correderaPVC:
          
          #Traslapo
          precioT = c.execute('''SELECT
-            traslapo FROM PVCcorredera WHERE color = self.color''')
+            traslapo FROM PVCcorredera WHERE color = ?''', self.color)
          
          precioTraslapo = self.traslapo*self.hojas*precioT/6
          
@@ -114,13 +114,13 @@ class correderaPVC:
          
          #Manilla
          precioManilla = ('''SELECT
-            manilla FROM PVCcorredera WHERE color = self.color''')
+            manilla FROM PVCcorredera WHERE color = ?''', self.color)
          
          precios.append(precioManilla)
          
          #Carros
          precioC = c.execute('''SELECT
-            precio FROM otros WHERE tipo = self.carro''')
+            precio FROM otros WHERE tipo = ?''', self.carro)
          
          precioCarros = precioC*2*self.hojas
          
@@ -128,7 +128,7 @@ class correderaPVC:
          
          #Vidrios
          precioV = c.execute('''SELECT
-            precio FROM otros WHERE tipo = self.vidrio''')
+            precio FROM otros WHERE tipo = ?''', self.vidrio)
          
          precioVidrio = ((self.alto-139)*(self.ancho-139)/1000000)*precioV*self.hojas
          
