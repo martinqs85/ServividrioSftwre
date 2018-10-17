@@ -8,11 +8,13 @@ import tkinter.messagebox
 import tkinter as tk
 from Catalogo import catalogo
 
-usuarios = {'Pancho': 0000}
+usuarios = {'Pancho': 1345}
 
 def inicio():
 
     global ventanaInicio
+    global entryUsuarioI
+    global entryContraseñaI
     
     ventanaInicio = tk.Tk()
     ventanaInicio.geometry("300x300")

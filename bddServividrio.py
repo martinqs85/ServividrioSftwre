@@ -7,14 +7,14 @@ Created on Fri Sep 21 17:35:41 2018
 
 import sqlite3
 
-conn = sqlite3.connect('BDDServividrio.db')
+conn = sqlite3.connect('BDDServividrio.db', timeout=10)
 c = conn.cursor()
 
 """ 
 c.execute('''CREATE TABLE pedido
           (nombreCliente, telefono, correo, cotizacion, estado)''')
 
-c.execute('''CREATE TABLE PVCcorredera
+c.execute('''CREATE TABLE correderaPVC
           (color, marcoDobleRiel, marcoTripleRiel, hoja, junquillo, traslapo, manilla)''')
 
 c.execute('''CREATE TABLE PVCfija
@@ -28,13 +28,24 @@ c.execute('''CREATE TABLE PVCpuerta
 c.execute('''CREATE TABLE otros
           (tipo, precio)''') 
 
+c.execute('''CREATE TABLE usuarios
+          (nombre, contraseña)''') 
+
+c.execute('''INSERT INTO usuarios VALUES
+          ('Martin', 1111),
+          ('Pancho', 0000)''') 
+
 c.execute('''INSERT INTO otros VALUES
          ('Costo fabricación', 15000), 
          ('Costo instalación', 10000),
          ('Termopanel', 26000),
          ('Vidrio simple', 8000),
          ('Carro grande', 992),
-         ('Carro chico', 6296)''') """
+         ('Carro chico', 6296)''') 
+
+c.execute("INSERT INTO correderaPVC VALUES ('Blanco', 15642, 26325,17789, 4267, 5137, 1200)")
+
+"""
 
 class fijaPVC:
 
